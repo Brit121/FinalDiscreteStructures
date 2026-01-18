@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cartesian Products</title>
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide {
+            height: 100vh;
+            width: 100%;
+            background: radial-gradient(circle at top right, #2d3f87, #0a1333 65%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .6s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .content {
+            max-width: 1200px;
+            width: 100%;
+            padding: 70px;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        .title {
+            font-family: 'Luckiest Guy', cursive;
+            font-size: 6.5rem;
+            color: #ffc400;
+        }
+
+        .subtitle {
+            font-size: 3.5rem;
+            font-weight: 600;
+        }
+
+        .lesson {
+            margin-top: 25px;
+            font-size: 1.6rem;
+        }
+
+        .line {
+            width: 320px;
+            height: 4px;
+            background: #ffc400;
+            margin-top: 18px;
+        }
+
+        .section-title {
+            font-family: 'Luckiest Guy', cursive;
+            font-size: 3.2rem;
+            color: #ffc400;
+            margin-bottom: 30px;
+        }
+
+        .flex-row {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        /* HOME */
+        .module-btn{
+            position:fixed;
+            top:25px;left:30px;
+            background:#7ab3de;
+            padding:10px 18px;
+            border-radius:30px;
+            text-decoration:none;
+            font-weight:600;
+            color:#0c0c0c;
+            z-index:100;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .nav-left {
+            left: 40px;
+        }
+
+        .nav-right {
+            right: 40px;
+        }
+
+        .title-layout {
+            align-self: flex-start;
+            margin-top: 120px;
+        }
+
+        ul {
+            text-align: left;  
+            padding-left: 40px; 
+        }
+    </style>
+</head>
+<body>
+    <a href="./home.html" class="module-btn">🏠 Home</a>
+
+    <!-- SLIDE 1 -->
+    <section class="slide active">
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content title-layout">
+            <div class="title">CARTESIAN</div>
+            <div class="subtitle">PRODUCTS</div>
+            <div class="line"></div>
+            <div class="lesson">Lesson 6: Discrete Structures</div>
+        </div>
+    </section>
+
+    <!-- SLIDE 2 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content">
+            <div class="section-title">LESSON OBJECTIVES:</div>
+            <ul style="font-size:1.6rem; line-height:1.9;">
+                <li>Define and understand the concept of a Cartesian product.</li>
+                <li>Calculate the Cartesian product of two sets.</li>
+                <li>Represent Cartesian products visually using ordered pairs, arrow diagrams, and graphs.</li>
+                <li>Apply Cartesian products to problem-solving scenarios.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 3 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content flex-row">
+            <div style="flex:1;">
+                <div class="section-title">WHAT IS CARTESIAN PRODUCT?</div>
+                <p style="font-size:1.5rem; line-height:1.7;">
+                    The <strong>Cartesian Product</strong> refers to the set of all possible <strong>ordered pairs</strong> 
+                    where the first element of the pair is from set <strong>A</strong> and the second element is from set <strong>B</strong>.
+                </p>
+                <p style="font-size:1.5rem; line-height:1.7; margin-top:25px;">
+                    <em>It is described by the notation</em> 
+                    <span style="color:#ffc400;font-weight:600;">A × B</span> 
+                    <em>where it mentions all the possible combinations we can make with elements of A and B.</em>
+                </p>
+            </div>
+            <div style="flex:1; text-align:center;">
+                <img src="cartesian-product.jpeg" alt="Cartesian Product Diagram" style="max-width:100%; background:white; padding:15px; border-radius:12px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 4 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content flex-row">
+            <div style="flex:1;">
+                <div class="section-title">CARTESIAN PRODUCT</div>
+                <p style="font-size:1.5rem; line-height:1.8;">
+                    The name <strong>"Cartesian"</strong> comes from 
+                    <span style="color:#ffc400;font-weight:600;">René Descartes</span>, 
+                    whose work in geometry involved representing points on a plane using ordered pairs of coordinates <strong>(x, y)</strong>.
+                </p>
+                <p style="font-size:1.5rem; line-height:1.8; margin-top:25px;">
+                    This idea is a direct application of the <strong>Cartesian product</strong> 
+                    of the set of real numbers with itself <span style="color:#ffc400;font-weight:600;">(ℝ × ℝ)</span>.
+                </p>
+            </div>
+            <div style="flex:1; text-align:center;">
+                <img src="descartes.jpg" alt="René Descartes" style="width:450px; border-radius:30px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 5 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content center">
+            <div class="section-title" style="margin-top:120px;">REAL-WORLD SCENARIO</div>
+            <p style="font-size:1.6rem; line-height:1.8; max-width:1000px; margin: 20px auto;">
+                Consider a scenario where you must choose an outfit for a job interview from a set of polo shirts and pants. 
+                How many combinations can you make?
+            </p>
+            <div class="flex-row" style="margin-top:20px; justify-content:center;">
+                <div style="text-align:center;">
+                    <img src="shirts.jpeg" alt="Polo Shirts" style="width:340px; border-radius:25px; box-shadow:0 18px 40px rgba(0,0,0,0.4);">
+                    <p style="margin-top:0px; font-size:1.3rem;"></p>
+                </div>
+                <div style="text-align:center;">
+                    <img src="pants.jpeg" alt="Pants" style="width:200px; border-radius:25px; box-shadow:0 18px 40px rgba(0,0,0,0.4);">
+                    <p style="margin-top:0px; font-size:1.3rem;"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 6 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content">
+            <div class="section-title">CONSIDER THESE SETS:</div>
+            <p style="font-size:1.6rem; line-height:2;">
+                A = { pink polo, green polo, blue polo }<br>
+                B = { khaki pants, black pants }
+            </p>
+            <div class="section-title" style="margin-top:40px;">OUTFIT COMBINATIONS:</div>
+            <ul style="font-size:1.6rem; line-height:2; padding-left:30px;">
+                <li>(pink polo, khaki pants)</li>
+                <li>(pink polo, black pants)</li>
+                <li>(green polo, khaki pants)</li>
+                <li>(green polo, black pants)</li>
+                <li>(blue polo, khaki pants)</li>
+                <li>(blue polo, black pants)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 7 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content">
+            <div class="section-title">CARTESIAN PRODUCT</div>
+            <p style="font-size:1.5rem; line-height:1.8;">
+                The number of pairs that we can create using sets can be computed using its cardinality.
+            </p>
+            <p style="font-size:1.5rem; line-height:1.8; margin-top:20px;">
+                For the set, A = {1, 2, 3} and B = {4, 5}, we can see that A has a cardinality of |3| while B has a cardinality of |2|.
+            </p>
+            <p style="font-size:1.5rem; line-height:1.8; margin-top:20px;">
+                Using the notation |A × B| = |A| × |B|, we can conclude that |A × B| = |3| × |2| = 6.
+            </p>
+            <p style="font-size:1.5rem; margin-top:20px;">
+                There should be 6 pairs for A × B.
+            </p>
+        </div>
+    </section>
+
+    <!-- SLIDE 8 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content">
+            <div class="section-title">EXAMPLES:</div>
+            <p style="font-size:1.5rem; line-height:1.8;">
+                If A = {a, b} and Z = {1}, find A × Z.
+            </p>
+            <p style="font-size:1.5rem; line-height:2; margin-top:25px;">
+                <strong>Given:</strong><br>A = {a, b} and Z = {1}
+            </p>
+            <p style="font-size:1.5rem; line-height:2;">
+                <strong>Formula:</strong> A × Z = {a, b} × {1}
+            </p>
+            <p style="font-size:1.5rem; line-height:2;">
+                <strong>No. of Subsets:</strong> P × Q = |2| × |1| = 2
+            </p>
+            <p style="font-size:1.8rem; font-weight:600; color:#ffc400; margin-top:20px;">
+                A × Z = { (a,1), (b,1) }
+            </p>
+        </div>
+    </section>
+
+    <!-- SLIDE 9 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content">
+            <div class="section-title">EXAMPLES:</div>
+            <p style="font-size:1.5rem; line-height:1.8;">
+                If P = {1, 2} and R = {Red, Blue}, find P × R.
+            </p>
+            <p style="font-size:1.5rem; line-height:2; margin-top:25px;">
+                <strong>Given:</strong><br>P = {1, 2} and Q = {Red, Blue}
+            </p>
+            <p style="font-size:1.5rem; line-height:2;">
+                <strong>Formula:</strong> P × Q = {1, 2} × {Red, Blue}
+            </p>
+            <p style="font-size:1.5rem; line-height:2;">
+                <strong>No. of Subsets:</strong> P × Q = |2| × |2| = 4
+            </p>
+            <p style="font-size:1.8rem; font-weight:600; color:#ffc400; margin-top:20px;">
+                P × Q = { (1, Red), (1, Blue), (2, Red), (2, Blue) }
+            </p>
+        </div>
+    </section>
+
+    <!-- SLIDE 10 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content">
+            <div class="section-title">EXAMPLES:</div>
+            <p style="font-size:1.5rem; line-height:1.8;">
+                If E = {1, 2} and F = { }, find E × F.
+            </p>
+            <p style="font-size:1.5rem; line-height:2; margin-top:25px;">
+                <strong>Given:</strong><br>E = {1, 2} and F = { }
+            </p>
+            <p style="font-size:1.5rem; line-height:2;">
+                <strong>Formula:</strong> E × F = {1, 2} × { }
+            </p>
+            <p style="font-size:1.5rem; line-height:2;">
+                <strong>No. of Subsets:</strong> E × F = |2| × |0| = 0
+            </p>
+            <p style="font-size:1.8rem; font-weight:600; color:#ffc400; margin-top:20px;">
+                E × F = { }
+            </p>
+        </div>
+    </section>
+
+    <!-- SLIDE 11 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content">
+            <div class="section-title">EXAMPLES:</div>
+            <p style="font-size:1.5rem; line-height:1.8;">
+                If S = {Head, Tails} and T = {Head, Tails }, find S × T.
+            </p>
+            <p style="font-size:1.5rem; line-height:2; margin-top:25px;">
+                <strong>Given:</strong><br>S = {Head, Tails} and T = {Head, Tails }
+            </p>
+            <p style="font-size:1.5rem; line-height:2;">
+                <strong>Formula:</strong> S × T = {Head, Tails} x {Head, Tails }
+            </p>
+            <p style="font-size:1.5rem; line-height:2;">
+                <strong>No. of Subsets:</strong> S × T = |2| × |2| = 4
+            </p>
+            <p style="font-size:1.8rem; font-weight:600; color:#ffc400; margin-top:20px;">
+                S × T = { (Heads, Heads), (Heads, Tails), (Tails, Heads), (Tails, Tails) }
+            </p>
+        </div>
+    </section>
+
+    <!-- SLIDE 12 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content">
+            <div class="section-title">PRACTICE TEST:</div>
+            <p style="font-size:1.5rem; line-height:1.8;">
+                Give the Cartesian Product of the following sets:
+            </p>
+            <p style="font-size:1.5rem; line-height:2;">
+                A = {1, 2, 3} and B = {3, 4}
+            </p>
+            <p style="font-size:1.5rem; line-height:2;">
+                S = {Red Shirt, Blue Shirt} and P = {Jeans, Khakis, Shorts}
+            </p>
+            <p style="font-size:1.5rem; line-height:2;">
+                Mains = {Chicken, Fish, Tofu} and Sides = {Rice, Salad, Fries}
+            </p>
+            <p style="font-size:1.5rem; line-height:2;">
+                Sizes = {S, M, L} and Colors = {Black, White}
+            </p>
+        </div>
+    </section>
+
+    <!-- SLIDE 13 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content flex-row">
+            <div style="flex:1; text-align:center;">
+                <img src="jollibee-mix-match.jpeg" alt="Jollibee Mix and Match Promo" style="max-width:100%; background:white; padding:15px; border-radius:12px;">
+            </div>
+            <div style="flex:1;">
+                <div class="section-title">PRACTICE TEST:</div>
+                <p style="font-size:1.6rem; line-height:1.7; margin-top:20px;">
+                    Provide costing for <strong>Jollibee's Mix and Match promo</strong> and:
+                </p>
+                <ul style="font-size:1.5rem; line-height:1.8; margin-top:20px;">
+                    <li>Prove that it is a <strong>feasible promo</strong>.</li>
+                    <li>Find the most <strong>sulit combo</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 14 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content left">
+            <div class="section-title">PRACTICE TEST:</div>
+            <p style="font-size:1.6rem; line-height:1.7; margin-top:20px;">
+                Let A = {0, 2, 3}, B = {2, 3}, C = {1, 4}, universal set be U = {0, 1, 2, 3, 4}. List the elements of:
+            </p>
+            <ul style="font-size:1.6rem; line-height:1.9; margin-top:20px; text-align:left;">
+                <li>A × B</li>
+                <li>B × C</li>
+                <li>A ∩ B × C</li>
+                <li>Cᶜ × A</li>
+                <li>B ∪ C × A</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 15 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="content left">
+            <div class="section-title">PRACTICE TEST:</div>
+            <p style="font-size:1.6rem; line-height:1.7; margin-top:20px;">
+                Let A = {1, 2, 3, 4}, B = {1, 2}, C = {2, 3}. List the elements of:
+            </p>
+            <ul style="font-size:1.6rem; line-height:1.9; margin-top:20px; text-align:left;">
+                <li>A × C</li>
+                <li>C × B</li>
+                <li>A ∩ B × A</li>
+                <li>C ∩ B × A</li>
+                <li>B ∪ C × A</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 16 -->
+    <section class="slide">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <div class="content title-layout">
+            <div class="title">CARTESIAN</div>
+            <div class="subtitle">PRODUCTS</div>
+            <div class="line"></div>
+            <div class="lesson">Lesson 6: Discrete Structures</div>
+        </div>
+    </section>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(i) {
+            slides.forEach(s => s.classList.remove('active'));
+            slides[i].classList.add('active');
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+
+</body>
+</html>

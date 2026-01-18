@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Introduction to Propositional Logic</title>
+
+    <!-- BOOTSTRAP 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+
+        /* SLIDES */
+        .slide {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            pointer-events: none;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+        }
+
+        /* SLIDE BACKGROUNDS */
+        #slide1  { background: url("./lessonbg.png") center/cover no-repeat; }
+        #slide2  { background: url("./lessonbg.png") center/cover no-repeat; }
+        #slide3  { background: url("./lessonbg.png") center/cover no-repeat; }
+        #slide4  { background: url("./lessonbg.png") center/cover no-repeat; }
+        #slide5  { background: url("./lessonbg.png") center/cover no-repeat; }
+        #slide6  { background: url("./lessonbg.png") center/cover no-repeat; }
+        #slide7  { background: url("./lessonbg.png") center/cover no-repeat; }
+        #slide8  { background: url("./lessonbg.png") center/cover no-repeat; }
+        #slide9  { background: url("./lessonbg.png") center/cover no-repeat; }
+        #slide10 { background: url("./lessonbg.png") center/cover no-repeat; }
+        #slide11 { background: url("./lessonbg.png") center/cover no-repeat; }
+
+        /* CONTENT OVERLAY (PPT STYLE) */
+        .container {
+            background: rgba(214, 219, 223, 0.88);
+            backdrop-filter: blur(6px);
+            border-radius: 20px;
+            padding: 70px 80px;
+            max-width: 1200px;
+        }
+
+        /* TEXT STYLES */
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-top: 15px;
+        }
+
+        .section-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 35px;
+        }
+
+        .section-text {
+            font-size: 1.7rem;
+            max-width: 950px;
+        }
+
+        .outcomes-list {
+            padding-left: 25px;
+        }
+
+        .outcomes-list li {
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+
+        .dark-blue,
+        .answer-dark-blue {
+            color: #0b2f6b;
+            font-weight: 600;
+        }
+
+        /* HOME */
+        .module-btn{
+            position:fixed;
+            top:25px;left:30px;
+            background:#7ab3de;
+            padding:10px 18px;
+            border-radius:30px;
+            text-decoration:none;
+            font-weight:600;
+            color:#0c0c0c;
+            z-index:100;
+        }
+
+        /* NAV BUTTONS */
+        .nav-btn {
+            background: #a6e1fb;
+            border: none;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            font-size: 3rem;
+            cursor: pointer;
+            color: #000;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .nav-left  { left: 40px; }
+        .nav-right { right: 40px; }
+
+        .nav-btn:hover {
+            background: #7ab3de;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .nav-btn:active {
+            background: #5a9ec4;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="./home.html" class="module-btn">🏠 Home</a>
+
+    <!-- SLIDE 1 (ONLY > BUTTON) -->
+    <section class="slide active" id="slide1">
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="container text-center">
+            <h1 class="hero-title">INTRODUCTION TO<br>PROPOSITIONAL LOGIC</h1>
+            <p class="hero-subtitle">Lesson 1: Discrete Structures</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 2 -->
+    <section class="slide" id="slide2">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="container">
+            <h2 class="section-title">Learning Outcomes:</h2>
+            <ul class="outcomes-list">
+                <li>Students will be able to explain what a proposition is.</li>
+                <li>Students will be able to distinguish a proposition from other types of sentences.</li>
+                <li>Students will be able to determine the truth value (true or false) of simple propositions.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 3 -->
+    <section class="slide" id="slide3">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="container text-center">
+            <h2 class="section-title">WHAT IS A PROPOSITION?</h2>
+            <p class="section-text mx-auto">
+                A <strong>proposition</strong> is a type of statement or claim that is expressed in declarative form
+                and can be answered as either true or false.
+            </p>
+        </div>
+    </section>
+
+    <!-- SLIDE 4 -->
+    <section class="slide" id="slide4">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="container">
+            <h2 class="section-title">WHAT IS A PROPOSITION?</h2>
+            <p class="section-text"><strong>It is a Declarative Statement:</strong></p>
+            <p class="section-text">
+                A proposition is a statement that is expressed in <strong>declarative form</strong> whose primary
+                function is to <strong>convey information</strong>, <strong>state a fact</strong>,
+                <strong>offer an explanation</strong>, or <strong>express an opinion</strong>.
+            </p>
+            <p class="section-text mt-4">
+                A sentence stated in the form of a <strong>question</strong>,
+                <strong>request/command</strong>, or <strong>exclamation</strong> is <strong>NOT</strong>
+                considered a proposition.
+            </p>
+        </div>
+    </section>
+
+    <!-- SLIDE 5 -->
+    <section class="slide" id="slide5">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="container">
+            <h2 class="section-title">
+                Tell whether the following statements are declarative statements or not:
+            </h2>
+            <ul class="outcomes-list">
+                <li>The Philippines is a country in Asia.</li>
+                <li>The Philippines is composed of 7,107 islands.</li>
+                <li>2 × 2 = 4.</li>
+                <li>What do you do for fun?</li>
+                <li>Please close the door behind you.</li>
+                <li>Wow!</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 6 -->
+    <section class="slide" id="slide6">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="container">
+            <h2 class="section-title">
+                Tell whether the following statements are declarative statements or not:
+            </h2>
+            <ul class="outcomes-list">
+                <li>The Philippines is a country in Asia. <span class="answer-dark-blue">(Declarative)</span></li>
+                <li>The Philippines is composed of 7,107 islands. <span class="answer-dark-blue">(Declarative)</span></li>
+                <li>2 × 2 = 4. <span class="answer-dark-blue">(Declarative)</span></li>
+                <li>What do you do for fun? <span class="answer-dark-blue">(Not Declarative – Question)</span></li>
+                <li>Please close the door behind you. <span class="answer-dark-blue">(Not Declarative – Command)</span></li>
+                <li>Wow! <span class="answer-dark-blue">(Not Declarative – Exclamation)</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 7 -->
+    <section class="slide" id="slide7">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="container">
+            <h2 class="section-title">WHAT IS A PROPOSITION?</h2>
+            <p class="section-text">
+                <span class="dark-blue">It has a Truth Value:</span><br>
+                A proposition is a definitive statement that is answerable by either
+                <strong>true</strong> or <strong>false</strong> but never both or in between.
+            </p>
+            <p class="section-text mt-4">
+                The truth value is a definite, objective, non-contradictory characteristic of the proposition.
+            </p>
+        </div>
+    </section>
+
+    <!-- SLIDE 8 -->
+    <section class="slide" id="slide8">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="container">
+            <h2 class="section-title">
+                Tell whether the following statements are answerable by a definite
+                <span class="dark-blue">true</span> or <span class="dark-blue">false</span>.
+            </h2>
+            <ul class="outcomes-list">
+                <li>The sky is blue. <span class="dark-blue">(Answerable by true or false)</span></li>
+                <li>8 × 6 = 36. <span class="dark-blue">(Answerable by true or false)</span></li>
+                <li>x + 5 = 25. <span class="dark-blue">(Not answerable by true or false)</span></li>
+                <li>Chocolate is the best flavor of ice cream. <span class="dark-blue">(Not answerable by true or false)</span></li>
+                <li>It will rain tomorrow. <span class="dark-blue">(Not answerable by true or false)</span></li>
+                <li>The weather is nice. <span class="dark-blue">(Not answerable by true or false)</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 9 -->
+    <section class="slide" id="slide9">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="container">
+            <h2 class="section-title">WHY SOME STATEMENTS ARE NOT PROPOSITIONS:</h2>
+            <ul class="outcomes-list">
+                <li>
+                    <span class="dark-blue">It is a statement stated as an opinion:</span>
+                    Opinions are subjective statements or personal beliefs and are not universally true or false.
+                </li>
+                <li>
+                    <span class="dark-blue">It is a statement made about the future:</span>
+                    While the statement may eventually become true or false, its truth value is unknown at the time of expression.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 10 -->
+    <section class="slide" id="slide10">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+        <div class="container">
+            <h2 class="section-title">WHY SOME STATEMENTS ARE NOT PROPOSITIONS:</h2>
+            <ul class="outcomes-list">
+                <li>
+                    <span class="dark-blue">It is an open sentence or a sentence with unknown variables:</span>
+                    The truth depends on the value of an unknown variable and is not a proposition until a specific value is assigned.
+                </li>
+                <li>
+                    <span class="dark-blue">It is a statement with ambiguous terms:</span>
+                    Statements with unclear or subjective words depend on personal interpretation, so their truth value is not definite.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 11 (CLOSING – ONLY < BUTTON) -->
+    <section class="slide" id="slide11">
+        <button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+        <div class="container text-center">
+            <h1 class="hero-title">THANK YOU!</h1>
+            <p class="hero-subtitle">
+                End of Lesson 1<br>
+                Introduction to Propositional Logic
+            </p>
+        </div>
+    </section>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 11;
+
+        function showSlide(n) {
+            document.querySelectorAll('.slide').forEach(slide => slide.classList.remove('active'));
+            document.getElementById('slide' + n).classList.add('active');
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        showSlide(1);
+    </script>
+
+</body>
+</html>

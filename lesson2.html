@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lesson 2 – Propositions and Logical Connectives</title>
+
+<!-- BOOTSTRAP 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Montserrat',sans-serif;
+    overflow:hidden;
+}
+
+/* SLIDES */
+.slide{
+    height:100vh;
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    transform:translateX(40px);
+    transition:0.7s ease;
+    pointer-events:none;
+
+    /* BACKGROUND IMAGE */
+    background: url("background.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.slide.active{
+    opacity:1;
+    transform:translateX(0);
+    pointer-events:auto;
+}
+
+/* CONTENT BOX – FIXED SIZE */
+.container{
+    background:rgba(214,219,223,0.9);
+    backdrop-filter:blur(6px);
+    border-radius:20px;
+    padding:50px 60px;   /* from 70px 80px */
+    max-width:1000px;    /* from 1200px */
+    max-height:85vh;     /* NEW – para hindi mag overflow */
+    overflow:auto;       /* NEW – scroll if mahaba */
+}
+
+/* TEXT – FIXED SCALE */
+.section-title{
+    font-size:2.6rem;
+    font-weight:700;
+    margin-bottom:20px;
+    color:#1f3a5f;   /* soft navy */
+}
+
+
+.section-text{
+    font-size:1.4rem;    /* from 1.7rem */
+    max-width:900px;
+}
+
+.list li{
+    font-size:1.35rem;   /* from 1.6rem */
+    margin-bottom:12px;
+}
+
+.module-btn{
+    position:fixed;
+    top:25px;left:30px;
+    background:#7ab3de;
+    padding:10px 18px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    color:#0c0c0c;
+    z-index:100;
+}
+
+
+/* NAV BUTTONS */
+.nav-btn{
+    background:none;border:none;
+    font-size:3rem;cursor:pointer;
+    color:#fff;
+    position:absolute;
+    top:50%;transform:translateY(-50%);
+}
+.nav-left{left:40px;}
+.nav-right{right:40px;}
+.nav-btn:hover{color:#ffd700;transform:translateY(-50%) scale(1.2);}
+</style>
+</head>
+
+<body>
+    <a href="../home.html" class="module-btn">🏠 Home</a>
+
+<!-- SLIDE 1 -->
+<section class="slide active" id="slide1">
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+<div class="container text-center">
+<h1 class="hero-title">PROPOSITIONS AND<br>LOGICAL CONNECTIVES</h1>
+<p class="hero-subtitle">Lesson 2</p>
+</div>
+</section>
+
+<!-- SLIDE 2 -->
+<section class="slide" id="slide2">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+<div class="container">
+<h2 class="section-title">Learning Outcomes</h2>
+<ul class="list">
+<li>Differentiate Atomic Proposition from Compound Proposition.</li>
+<li>Identify and define the concepts of negation, conjunction, disjunction, implication, and biconditional implication in logical statements.</li>
+<li>Construct logical statements using the aforementioned concepts, demonstrating a clear understanding of their interrelationships.</li>
+<li>Evaluate the truth values of complex logical statements by applying the laws of logic and truth tables.</li>
+<li>Develop logical proofs by utilizing implication and biconditional implication in deductive reasoning.</li>
+</ul>
+</div>
+</section>
+
+<!-- SLIDE 3 -->
+<section class="slide" id="slide3">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+<div class="container">
+<h2 class="section-title">Atomic Proposition</h2>
+<p class="section-text">
+An atomic proposition is a statement that expresses a single, complete thought and cannot be decomposed into simpler propositions.
+</p>
+</div>
+</section>
+
+<!-- SLIDE 4 -->
+<section class="slide" id="slide4">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+<div class="container">
+<h2 class="section-title">Examples of Atomic Propositions</h2>
+<ul class="list">
+<li>“The sky is blue.”</li>
+<li>“The cat is on the mat.”</li>
+<li>“5 is a prime number.”</li>
+<li>“The sun is shining.”</li>
+<li>“It is raining.”</li>
+</ul>
+<!-- IMAGE PLACEHOLDER -->
+</div>
+</section>
+
+<!-- SLIDE 5 -->
+<section class="slide" id="slide5">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+<div class="container">
+<h2 class="section-title">Compound Proposition</h2>
+<p class="section-text">
+A compound proposition is a proposition formed by combining two or more simpler propositions using logical connectives.
+</p>
+</div>
+</section>
+
+<!-- SLIDE 6 -->
+<section class="slide" id="slide6">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+<div class="container">
+<h2 class="section-title">Examples of Compound Propositions</h2>
+<ul class="list">
+<li>“It is not raining.”</li>
+<li>“The sun is shining, and the birds are singing.”</li>
+<li>“I will eat an apple, or I will eat a banana.”</li>
+<li>“If it rains, then the ground will be wet.”</li>
+<li>“A triangle is equilateral if and only if all its angles are equal.”</li>
+</ul>
+<!-- IMAGE PLACEHOLDER -->
+</div>
+</section>
+
+<!-- SLIDE 7 -->
+<section class="slide" id="slide7">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+<div class="container">
+<h2 class="section-title">Logical Connectives</h2>
+<p class="section-text">
+Logical connectives, also known as logical operators, are symbols or words used in logic to combine or modify propositions and to express complex logical relationships.
+</p>
+</div>
+</section>
+
+<!-- SLIDE 8 -->
+<section class="slide" id="slide8">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+<div class="container">
+<h2 class="section-title">Types of Logical Connectives</h2>
+<ul class="list">
+<li>Negation (¬)</li>
+<li>Conjunction (∧)</li>
+<li>Disjunction (∨)</li>
+<li>Implication (→)</li>
+<li>Biconditional Implication (↔)</li>
+</ul>
+</div>
+</section>
+
+<!-- SLIDE 9 -->
+<section class="slide" id="slide9">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Negation (¬)</h2>
+<p class="section-text">
+Negation is a logical connective represented by the word <b>“not”</b>
+or the symbol <b>“¬”</b> that reverses the truth value of a proposition.
+</p>
+<!-- IMAGE PLACEHOLDER: negation.png -->
+</div>
+</section>
+
+<!-- SLIDE 10 -->
+<section class="slide" id="slide10">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Examples of Negation</h2>
+
+<p class="section-text">
+Statement: “The sun is shining.”<br>
+Negation: “The sun is <b>NOT</b> shining.”
+</p>
+
+<p class="section-text">
+Statement: “All dogs are friendly.”<br>
+Negation: “<b>NOT</b> all dogs are friendly.”
+</p>
+
+<p class="section-text">
+Statement: “The door is open.”<br>
+Negation: “The door is <b>NOT</b> open.”
+</p>
+
+<!-- IMAGE PLACEHOLDER: truth-negation.png -->
+</div>
+</section>
+
+<!-- SLIDE 11 -->
+<section class="slide" id="slide11">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Truth Table for Negation (¬)</h2>
+
+<p class="section-text">
+Letters are used to represent propositions.
+The conventional letters used for propositions are
+<b>p, q, r, s, …</b>.
+</p>
+
+<table class="table table-bordered text-center mt-4">
+<thead class="table-dark">
+<tr>
+<th>p</th>
+<th>¬p</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</section>
+
+<!-- SLIDE 12 -->
+<section class="slide" id="slide12">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Find the Negation (¬)</h2>
+
+<p class="section-text">
+Statement: “Biñan is a city in the province of Laguna.”<br>
+Negation: “Biñan is <b>NOT</b> a city in the province of Laguna.”
+</p>
+
+<p class="section-text">
+Statement: “Every student passed the test.”<br>
+Negation: “<b>NOT</b> every student passed the test.”
+</p>
+
+<p class="section-text">
+Statement: “I love the subject Discrete Structures.”<br>
+Negation: “I do <b>NOT</b> love the subject Discrete Structures.”
+</p>
+
+<p class="section-text">
+Statement: “Banana is rich in vitamin A.”<br>
+Negation: “Banana is <b>NOT</b> rich in vitamin A.”
+</p>
+
+</div>
+</section>
+
+<!-- SLIDE 13 -->
+<section class="slide" id="slide13">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Conjunction (∧)</h2>
+<p class="section-text">
+Conjunction is a logical connective that combines two propositions
+using the connective <b>“and”</b> or the symbol <b>“∧”</b>.
+</p>
+<!-- IMAGE PLACEHOLDER: conjunction.png -->
+</div>
+</section>
+
+<!-- SLIDE 14 -->
+<section class="slide" id="slide14">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container text-center">
+<p class="section-title">
+“The sun is shining, and the birds are singing.”
+</p>
+
+<p class="section-text">
+In the above proposition, the proposition before the word “and”
+is denoted by the letter <b style="color:red;">p</b> and the proposition
+after the word “and” is denoted by the letter <b style="color:red;">q</b>.
+</p>
+
+<p class="section-text">
+<b style="color:red;">p</b> = The sun is shining. </p>
+
+<p class="section-text">
+<b style="color:red;">q</b> = The birds are singing.
+</p>
+</div>
+</section>
+
+<!-- SLIDE 15 -->
+<section class="slide" id="slide15">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Examples of Conjunction</h2>
+
+<ul class="list">
+<li>“I have a pen, and I have a notebook.”</li>
+<li>“The cat is black, and the dog is white.”</li>
+<li>“The weather is warm, and we are going to the beach.”</li>
+<li>“The number is even, and it is divisible by two.”</li>
+<li>“She is a doctor, and he is an engineer.”</li>
+</ul>
+
+</div>
+</section>
+
+<!-- SLIDE 16 -->
+<section class="slide" id="slide16">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Truth Table for Conjunction (∧)</h2>
+
+<p class="section-text">
+For a conjunction to be true, both individual propositions must be true.
+If either one or both are false, the entire conjunction is false.
+</p>
+
+<table class="table table-bordered text-center mt-4">
+<thead class="table-dark">
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p ∧ q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+
+<!-- IMAGE PLACEHOLDER: truth-conjunction.png -->
+</div>
+</section>
+
+<!-- SLIDE 17 -->
+<section class="slide" id="slide17">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Disjunction (∨)</h2>
+
+<p class="section-text">
+A disjunction is a compound proposition formed by combining two propositions
+using the logical connective <b>“or”</b>.
+</p>
+
+<p class="section-text">
+“I will eat an apple, or I will eat an orange.”
+</p>
+
+<p class="section-text">
+In the above proposition, the proposition before the word “or”
+is denoted by the letter <b style="color:red;">p </b> and the proposition
+after the word “or” is denoted by the letter <b style="color:red;">q </b>.
+</p>
+
+<p class="section-text">
+<b style="color:red;">p</b> = I will eat an apple.
+</p>
+<p class="section-text">
+<b style="color:red;">q</b> = I will eat an orange.
+</p>
+
+<!-- IMAGE PLACEHOLDER: disjunction.png -->
+</div>
+</section>
+
+<!-- SLIDE 18 -->
+<section class="slide" id="slide18">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Examples of Disjunction</h2>
+
+<ul class="list">
+<li>“The light is on, or the door is open.”</li>
+<li>“He is at home, or he is at work.”</li>
+<li>“We can go to the movies, or we can go to the park.”</li>
+<li>“You can pay with cash, or you can pay with a credit card.”</li>
+<li>“The number is even, or it is divisible by five.”</li>
+</ul>
+
+</div>
+</section>
+
+<!-- SLIDE 19 -->
+<section class="slide" id="slide19">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Truth Table for Disjunction (∨)</h2>
+
+<p class="section-text">
+A disjunction is true if at least one of the individual propositions is true.
+It is also true if both propositions are true.
+</p>
+
+<table class="table table-bordered text-center mt-4">
+<thead class="table-dark">
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p ∨ q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+
+<!-- IMAGE PLACEHOLDER: truth-disjunction.png -->
+</div>
+</section>
+
+<!-- SLIDE 20 -->
+<section class="slide" id="slide20">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Practice Exercise 1</h2>
+
+<p class="section-text">
+Complete the table by determining if the truth value for the proposition
+is true (T) or false (F).
+</p>
+
+<table class="table table-bordered text-center mt-4">
+<thead class="table-dark">
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p ∨ q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>✘</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</section>
+
+<!-- SLIDE 21 -->
+<section class="slide" id="slide21">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Implication (→)</h2>
+
+<p class="section-text">
+An implication is a compound proposition formed by combining two propositions
+using the logical connective <b>“if…then”</b> or the symbol <b>→</b>.
+</p>
+
+<p class="section-text">
+“If it rains, then the ground will be wet.”
+</p>
+
+<p class="section-text">
+In the above proposition, the statement after the word <b>“if”</b>
+is denoted by the letter <b style="color:red;">p</b> (antecedent),
+and the statement after the word <b>“then”</b>
+is denoted by the letter <b style="color:red;">q</b> (consequent).
+</p>
+
+<p class="section-text">
+<b style="color:red;">p</b> = It rains.
+</p>
+<p class="section-text">
+<b style="color:red;">q</b> = The ground will be wet.
+</p>
+
+<!-- IMAGE PLACEHOLDER: implication.png -->
+</div>
+</section>
+
+<!-- SLIDE 22 -->
+<section class="slide" id="slide22">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+
+<div class="row align-items-center">
+
+    <!-- LEFT: TEXT -->
+    <div class="col-md-8">
+        <h2 class="section-title">Examples of Implication</h2>
+
+        <ul class="list">
+            <li>“If I study, then I will pass the exam.”</li>
+            <li>“If it rains, then the streets will be wet.”</li>
+            <li>“If a number is divisible by 4, then it is even.”</li>
+            <li>“If you press the switch, then the light will turn on.”</li>
+            <li>“If today is Monday, then tomorrow is Tuesday.”</li>
+        </ul>
+    </div>
+
+    <!-- RIGHT: IMAGE -->
+    <div class="col-md-4 text-center">
+        <img src="implication.png"
+             alt="Implication Diagram"
+             class="img-fluid"
+             style="
+                max-width:250px;
+                border-radius:12px;
+                box-shadow:0 8px 20px rgba(0,0,0,0.35);
+             ">
+    </div>
+
+</section>
+
+
+<!-- SLIDE 23 -->
+<section class="slide" id="slide23">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Truth Table for Implication (→)</h2>
+
+<p class="section-text">
+An implication <b>p → q</b> is false only when
+<b>p</b> is true and <b>q</b> is false.
+In all other cases, the implication is true.
+</p>
+
+<table class="table table-bordered text-center mt-4">
+<thead class="table-dark">
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p → q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+</tr>
+</tbody>
+</table>
+
+<!-- IMAGE PLACEHOLDER: truth-implication.png -->
+</div>
+</section>
+
+<!-- SLIDE 24 -->
+<section class="slide" id="slide24">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Important Note on Implication</h2>
+
+<p class="section-text">
+The implication <b>p → q</b> does not say that <b>p</b> causes <b>q</b>.
+It only states that whenever <b>p</b> is true, <b>q</b> must also be true.
+</p>
+
+<p class="section-text">
+If <b>p</b> is false, the implication is considered true
+regardless of the truth value of <b>q</b>.
+</p>
+
+</div>
+</section>
+
+<!-- SLIDE 25 -->
+<section class="slide" id="slide25">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Biconditional Implication (↔)</h2>
+
+<p class="section-text">
+A biconditional implication is a compound proposition formed by combining
+two propositions using the phrase <b>“if and only if”</b> or the symbol <b>↔</b>.
+</p>
+
+<p class="section-text">
+“A triangle is equilateral if and only if all its angles are equal.”
+</p>
+
+<p class="section-text">
+In the above proposition:
+</p>
+
+<p class="section-text">
+<b style="color:red;">p</b> = A triangle is equilateral.</p>
+<p class="section-text">
+<b style="color:red;">q</b> = All its angles are equal.
+</p>
+
+<!-- IMAGE PLACEHOLDER: biconditional.png -->
+</div>
+</section>
+
+<!-- SLIDE 26 -->
+<section class="slide" id="slide26">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Examples of Biconditional</h2>
+
+<ul class="list">
+<li>“You will pass the course if and only if you pass all exams.”</li>
+<li>“A number is even if and only if it is divisible by 2.”</li>
+<li>“The light is on if and only if the switch is pressed.”</li>
+<li>“A figure is a square if and only if all sides are equal and all angles are right angles.”</li>
+</ul>
+
+</div>
+</section>
+
+<!-- SLIDE 27 -->
+<section class="slide" id="slide27">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Truth Table for Biconditional (↔)</h2>
+
+<p class="section-text">
+A biconditional <b>p ↔ q</b> is true when both propositions have the
+same truth value (both true or both false).
+</p>
+
+<table class="table table-bordered text-center mt-4">
+<thead class="table-dark">
+<tr>
+<th>p</th>
+<th>q</th>
+<th>p ↔ q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+</tr>
+</tbody>
+</table>
+
+<!-- IMAGE PLACEHOLDER: truth-biconditional.png -->
+</div>
+</section>
+
+
+
+<!-- SLIDE 28 -->
+<section class="slide" id="slide28">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Converting English Sentences into Symbolic Form</h2>
+
+<p class="section-text">
+English sentences can be translated into symbolic logic by identifying
+the propositions involved and the logical connectives used.
+</p>
+
+<ul class="list">
+<li>“and” → Conjunction (∧)</li>
+<li>“or” → Disjunction (∨)</li>
+<li>“not” → Negation (¬)</li>
+<li>“if … then” → Implication (→)</li>
+<li>“if and only if” → Biconditional (↔)</li>
+</ul>
+
+</div>
+</section>
+
+<!-- SLIDE 29 -->
+<section class="slide" id="slide29">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Examples: English to Symbolic Form</h2>
+
+<p class="section-text">
+Let:
+</p>
+<p class="section-text">
+<b style="color:red;">p</b> = It is raining  
+<br>
+<b style="color:red;">q</b> = The ground is wet
+</p>
+
+<ul class="list">
+<li>“It is raining and the ground is wet.” → <b>p ∧ q</b></li>
+<li>“It is raining or the ground is wet.” → <b>p ∨ q</b></li>
+<li>“It is not raining.” → <b>¬p</b></li>
+<li>“If it is raining, then the ground is wet.” → <b>p → q</b></li>
+<li>“It is raining if and only if the ground is wet.” → <b>p ↔ q</b></li>
+</ul>
+
+</div>
+</section>
+
+<!-- SLIDE 30 -->
+<section class="slide" id="slide30">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Inverse, Converse, and Contrapositive</h2>
+
+<p class="section-text">
+Consider the implication:
+</p>
+
+<p class="section-text">
+<b style="color:red;">p → q</b>
+</p>
+
+<p class="section-text">
+Different related statements can be formed from this implication.
+</p>
+
+</div>
+</section>
+
+<!-- SLIDE 31 -->
+<section class="slide" id="slide31">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Forms of an Implication</h2>
+
+<ul class="list">
+<li>
+<b>Original Statement:</b><br>
+If p, then q → <b>p → q</b>
+</li>
+
+<li>
+<b>Converse:</b><br>
+If q, then p → <b>q → p</b>
+</li>
+
+<li>
+<b>Inverse:</b><br>
+If not p, then not q → <b>¬p → ¬q</b>
+</li>
+
+<li>
+<b>Contrapositive:</b><br>
+If not q, then not p → <b>¬q → ¬p</b>
+</li>
+</ul>
+
+</div>
+</section>
+
+<!-- SLIDE 32 -->
+<section class="slide" id="slide32">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">&gt;</button>
+
+<div class="container">
+<h2 class="section-title">Example</h2>
+
+<p class="section-text">
+Let:
+</p>
+<p class="section-text">
+<b style="color:red;">p</b> = It is raining  
+<br>
+<b style="color:red;">q</b> = The ground is wet
+</p>
+
+<ul class="list">
+<li><b>Original:</b> If it is raining, then the ground is wet.</li>
+<li><b>Converse:</b> If the ground is wet, then it is raining.</li>
+<li><b>Inverse:</b> If it is not raining, then the ground is not wet.</li>
+<li><b>Contrapositive:</b> If the ground is not wet, then it is not raining.</li>
+</ul>
+
+<p class="section-text mt-4">
+<b>NOTE:</b> An implication is logically equivalent to its contrapositive,
+but not necessarily to its converse or inverse.
+</p>
+
+</div>
+</section>
+
+<!-- SLIDE 33 -->
+<section class="slide" id="slide33">
+<button class="nav-btn nav-left" onclick="prevSlide()">&lt;</button>
+
+<div class="container">
+<h2 class="section-title">Lesson Summary</h2>
+
+<ul class="list">
+<li>An <b>atomic proposition</b> expresses a single idea.</li>
+<li>A <b>compound proposition</b> combines propositions using logical connectives.</li>
+<li>The five main logical connectives are:
+    <ul>
+        <li>Negation (¬)</li>
+        <li>Conjunction (∧)</li>
+        <li>Disjunction (∨)</li>
+        <li>Implication (→)</li>
+        <li>Biconditional Implication (↔)</li>
+    </ul>
+</li>
+<li>Truth tables are used to determine the truth value of compound propositions.</li>
+</ul>
+
+
+
+</div>
+</section>
+
+
+
+<script>
+let currentSlide = 1;
+const totalSlides = 33;
+
+function showSlide(n){
+document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
+document.getElementById('slide'+n).classList.add('active');
+}
+function nextSlide(){
+if(currentSlide < totalSlides){
+currentSlide++;
+showSlide(currentSlide);
+}}
+function prevSlide(){
+if(currentSlide > 1){
+currentSlide--;
+showSlide(currentSlide);
+}}
+
+// Keyboard navigation
+document.addEventListener("keydown", function(e){
+    if (e.key === "ArrowRight") {
+        nextSlide();
+    }
+    if (e.key === "ArrowLeft") {
+        prevSlide();
+    }
+});
+</script>
+
+</body>
+</html>

@@ -5,7 +5,6 @@ body {
     color: #333;
     line-height: 1.6;
 }
-
 /* HOME */
 .module-btn{
     position:fixed;
@@ -17,21 +16,10 @@ body {
     text-decoration:none;
     font-weight:600;
     color:#0c0c0c;
-    z-index:9999;
+    z-index:1000;
     display:inline-block;
     cursor:pointer;
     transition: background-color 0.3s ease;
-    border: none;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-.module-btn:hover {
-    background: #5a9ec4;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-.module-btn:active {
-    opacity: 0.9;
 }
 
 header {
@@ -39,8 +27,6 @@ header {
     color: white;
     padding: 40px 20px;
     text-align: center;
-    position: relative;
-    z-index: 1;
 }
 
 header h1 {
@@ -120,14 +106,9 @@ section h2 {
 .example-card p {
     font-size: 15px;
     color: #333;
-    margin: 10px auto 0;
+    margin: 0;
     text-align: center;
-    flex-grow: 1;
-    max-width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1.6;
+    flex-grow: 1; 
 }
 
 @media (max-width: 900px) {

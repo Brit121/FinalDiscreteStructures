@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lesson 3 – Propositional Equivalences</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Montserrat',sans-serif;
+    overflow:hidden;
+}
+
+/* SLIDES */
+.slide{
+    height:100vh;
+    width:100vw;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transform:translateX(40px);
+    transition:.6s ease;
+    pointer-events:none;
+
+
+    background-image: url("lessonbg.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.slide.active{
+    opacity:1;
+    transform:translateX(0);
+    pointer-events:auto;
+}
+
+/* CONTENT */
+.container{
+    background:rgba(214,219,223,.93);
+    border-radius:25px;
+    padding:80px 100px;
+    width:90%;
+    max-width:1400px;
+}
+
+/* TEXT */
+.hero-title{font-size:4.8rem;font-weight:700; color:#1f3a5f;}
+.section-title{font-size:3.0rem;font-weight:700;margin-bottom:25px; color:#1f3a5f;}
+.section-text,li{font-size:1.8rem;line-height:1.5;text-align: justify;}
+.highlighted-text{font-weight:600;color:#f52784;text-align:center;font-size:2.2rem;}
+
+/* NAV */
+.nav-btn{
+    background:#a6e1fb;
+    border:none;
+    border-radius:50%;
+    width:70px;height:70px;
+    font-size:3rem;
+    cursor:pointer;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:10;
+}
+.nav-left{left:40px}
+.nav-right{right:40px}
+
+/* HOME */
+.module-btn{
+    position:fixed;
+    top:25px;left:30px;
+    background:#7ab3de;
+    padding:10px 18px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    color:#0c0c0c;
+    z-index:100;
+}
+
+.logical-title{
+    font-size: 2.2rem;
+    margin-top: 40px;   
+    margin-bottom: 15px;
+}
+
+/* COUNTER */
+.slide-counter{
+    position:fixed;
+    top:25px;right:30px;
+    background:#bcdef7;
+    padding:10px 18px;
+    border-radius:30px;
+    font-weight:600;
+    z-index:100;
+}
+
+/* PROGRESS */
+.progress-container{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:60%;
+    height:10px;
+    background:rgba(181, 231, 245, 0.6);
+    border-radius:20px;
+}
+#progressBar{
+    height:100%;
+    width:0%;
+    background:#0b2f6b;
+    border-radius:20px;
+    transition:.4s;
+}
+
+/* TABLES */
+.truth-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:25px;
+}
+.truth-table th,.truth-table td{
+    border:2px solid #333;
+    padding:12px;
+    text-align:center;
+    font-size:1.5rem;
+}
+.truth-table th{
+    background:#0b2f6b;
+    color:#fff;
+}
+</style>
+</head>
+
+<body>
+
+<a href="../home.html" class="module-btn">🏠 Home</a>
+<div id="slideCounter" class="slide-counter">Slide 1 / 31</div>
+<div class="progress-container"><div id="progressBar"></div></div>
+
+<!-- 1 -->
+<section class="slide active" id="slide1">
+<div class="container text-center">
+<h1 class="hero-title">PROPOSITIONAL<br>EQUIVALENCES</h1>
+<p class="section-text mt-3" style="text-align:center;">Lesson 3 – Discrete Structures</p>
+<p class="mt-4">MR. ROWELL L. MARQUINA</p>
+</div>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+</section>
+
+<!-- 2 -->
+<section class="slide" id="slide2">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Learning Objectives</h2>
+<ul>
+<li>Students will be able to simplify complex logical expressions using logical identities</li>
+<li> Students will demonstrate the ability to prove the equivalence of various propositions through formal methods. </li>
+<li> Students will evaluate the validity of different logical statements and justify their reasoning. </li>
+</ul>
+</div>
+</section>
+
+<!-- 3 -->
+<section class="slide" id="slide3">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Proposition Classes</h2>
+<p class="section-text">
+Propositions are classified based on their truth values into three categories.
+</p>
+<ul>
+<li>Tautology</li>
+<li>Contradiction</li>
+<li>Contingency</li>
+</ul>
+</div>
+</section>
+
+<!-- 4 -->
+<section class="slide" id="slide4">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Tautology</h2>
+<p class="section-text">
+A tautology is a compound proposition that is always true, regardless of the truth values 
+of its individual components. 
+</p>
+<p>
+    In other words, no matter what truth values you assign to the variables within the 
+proposition, the entire proposition will always evaluate to true.
+</p>
+</div>
+</section>
+
+<!-- 5 TAUTOLOGY TABLE -->
+<section class="slide" id="slide5">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Truth Table </h2> <p class="highlighted-text">Tautology</p>
+<table class="truth-table">
+<tr><th>p</th><th>q</th><th>p → p ∨ q</th></tr>
+<tr><td>T</td><td>T</td><td>T</td></tr>
+<tr><td>T</td><td>F</td><td>T</td></tr>
+<tr><td>F</td><td>T</td><td>T</td></tr>
+<tr><td>F</td><td>F</td><td>T</td></tr>
+</table>
+</div>
+</section>
+
+<!-- 6 CONTRADICTION -->
+<section class="slide" id="slide6">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Contradiction</h2>
+<p class="section-text">
+A contradiction is the opposite of a tautology. It's a compound proposition that is always 
+false, regardless of the truth values of its components.
+</p>
+<p>
+    No matter what truth values you assign to the variables, the proposition will always be false.
+</p>
+</div>
+</section>
+
+<!-- 7 CONTRADICTION TABLE -->
+<section class="slide" id="slide7">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Truth Table </h2> <p class="highlighted-text">Contradiction</p>
+<table class="truth-table">
+<tr><th>p</th><th>q</th><th>(p ∨ q)</th><th>¬p</th><th>¬q</th><th>¬p ∧ ¬q</th><th>(p ∨ q) ∧ (¬p ∧ ¬q)</th></tr>
+<tr><td>T</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr>
+<tr><td>T</td><td>F</td><td>T</td><td>F</td><td>T</td><td>F</td><td>F</td></tr>
+<tr><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td></tr>
+<tr><td>F</td><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td></tr>
+</table>
+</div>
+</section>
+
+<!-- 8 CONTINGENCY -->
+<section class="slide" id="slide8">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Contingency</h2>
+<p class="section-text">
+A contingency is a compound proposition that is neither a tautology nor a 
+contradiction. Its truth value depends on the truth values of its individual components.
+</p>
+<p>
+    In other words, it can be true in some cases and false in others.
+</p>
+</div>
+</section>
+
+<!-- 9 CONTINGENCY TABLE -->
+<section class="slide" id="slide9">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Truth Table </h2> <p class="highlighted-text">Contingency</p>
+<table class="truth-table">
+<tr><th>p</th><th>q</th><th>(p ∧ q)</th><th>¬p</th><th>(p ∧ q) → ¬p</th></tr>
+<tr><td>T</td><td>T</td><td>T</td><td>F</td><td>F</td></tr>
+<tr><td>T</td><td>F</td><td>F</td><td>F</td><td>T</td></tr>
+<tr><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td></tr>
+<tr><td>F</td><td>F</td><td>F</td><td>T</td><td>T</td></tr>
+</table>
+</div>
+</section>
+
+<!-- PRACTICE TABLE EXAMPLE -->
+<section class="slide" id="slide10">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">PRACTICE TEST:</h2>
+<p>Determine whether the following proposition is a Tautology, Contradiction, or Contingency:</p>
+<ul>
+<li>(p ∧ q) → p</li>
+<li>¬p → (p → q)</li>
+<li> p → (p ∨ q) </li>
+<li>(p ∨ q) ∧ (¬p ∧ ¬q)</li>
+<li>¬(p → q) → p</li>
+<li>(p → q) ∧ (q → p)</li>
+<li>q ∧ ¬ ( p → q)</li>
+
+</ul>
+
+</div>
+</section>
+
+<!-- TRUTH TABLE  FOR (p ∧ q) → p  -->
+<section class="slide" id="slide11">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">TRUTH TABLE  FOR </h2>
+<p class="highlighted-text">(p ∧ q) → p</p>
+<table class="truth-table">
+<tr><th>p</th><th>q</th><th>p ∧ q</th><th>(p ∧ q) → p</th></tr>
+<tr><td>T</td><td>T</td><td>T</td><td>T</td></tr>
+<tr><td>T</td><td>F</td><td>F</td><td>T</td></tr>
+<tr><td>F</td><td>T</td><td>F</td><td>T</td></tr>
+<tr><td>F</td><td>F</td><td>F</td><td>T</td></tr>
+</table>
+</div>
+</section>
+
+<!--TRUTH TABLE  FOR ¬p → (p → q)  -->
+<section class="slide" id="slide12">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">TRUTH TABLE  FOR</h2> 
+<p class="highlighted-text">¬p → (p → q)</p>
+<table class="truth-table">
+<tr><th>p</th><th>q</th><th>¬p</th><th>(p → q)</th><th>¬p → (p → q)</th></tr>
+<tr><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td></tr>
+<tr><td>T</td><td>F</td><td>F</td><td>F</td><td>T</td></tr>
+<tr><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr>
+<tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td></tr>
+</table>
+</div>
+</section>
+
+<!--TRUTH TABLE  FOR p → (p ∨ q)  -->
+<section class="slide" id="slide13">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">TRUTH TABLE  FOR </h2>
+<p class="highlighted-text">p → (p ∨ q)</p>
+<table class="truth-table">
+<tr><th>p</th><th>q</th><th>p ∨ q</th><th>p → (p ∨ q)</th></tr>
+<tr><td>T</td><td>T</td><td>T</td><td>T</td></tr>
+<tr><td>T</td><td>F</td><td>T</td><td>T</td></tr>
+<tr><td>F</td><td>T</td><td>T</td><td>T</td></tr>
+<tr><td>F</td><td>F</td><td>F</td><td>T</td></tr>
+</table>
+</div>
+</section>
+
+<!--TRUTH TABLE  FOR (p ∨ q) ∧ (¬ p ∧ ¬ q)   -->
+<section class="slide" id="slide14">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">TRUTH TABLE  FOR </h2>
+<p class="highlighted-text">(p ∨ q) ∧ (¬ p ∧ ¬ q)</p>
+<table class="truth-table">
+<tr><th>p</th><th>q</th><th>p ∨ q</th><th>¬p</th><th>¬q</th><th>¬p ∧ ¬q</th><th>(p ∨ q) ∧ (¬ p ∧ ¬ q)</th></tr>
+<tr><td>T</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr>
+<tr><td>T</td><td>F</td><td>T</td><td>F</td><td>T</td><td>F</td><td>F</td></tr>
+<tr><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td></tr>
+<tr><td>F</td><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td></tr>
+</table>
+</div>
+</section>
+
+<!--TRUTH TABLE  FOR ¬(p → q) → p -->
+<section class="slide" id="slide15">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">TRUTH TABLE  FOR </h2>
+<p class="highlighted-text">¬(p → q) → p</p>
+<table class="truth-table">
+<tr><th>p</th><th>q</th><th>¬(p → q)</th><th>¬(p → q) → p</th></tr>
+<tr><td>T</td><td>T</td><td>F</td><td>F</td></tr>
+<tr><td>T</td><td>F</td><td>F</td><td>F</td></tr>
+<tr><td>F</td><td>T</td><td>T</td><td>T</td></tr>
+<tr><td>F</td><td>F</td><td>F</td><td>T</td></tr>
+</table>
+</div>
+</section>
+
+<!--TRUTH TABLE  FOR (p → q) ∧ (q → p) -->
+<section class="slide" id="slide16">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">TRUTH TABLE  FOR </h2>
+<p class="highlighted-text">(p → q) ∧ (q → p)</p>
+<table class="truth-table">
+<tr><th>p</th><th>q</th><th>p → q</th><th>q → p</th><th>(p → q) ∧ (q → p)</th></tr>
+<tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr>
+<tr><td>T</td><td>F</td><td>T</td><td>F</td><td>F</td></tr>
+<tr><td>F</td><td>T</td><td>F</td><td>T</td><td>F</td></tr>
+<tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td></tr>
+</table>
+</div>
+</section>
+
+<!--TRUTH TABLE  FOR q ∧ ¬ ( p → q) -->
+<section class="slide" id="slide17">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">TRUTH TABLE  FOR</h2>
+<p class="highlighted-text">q ∧ ¬ ( p → q)</p>"
+<table class="truth-table">
+<tr><th>p</th><th>q</th><th>¬ ( p → q)</th><th>q ∧ ¬ ( p → q)</th></tr>
+<tr><td>T</td><td>T</td><td>F</td><td>F</td></tr>
+<tr><td>T</td><td>F</td><td>T</td><td>F</td></tr>
+<tr><td>F</td><td>T</td><td>F</td><td>F</td></tr>
+<tr><td>F</td><td>F</td><td>F</td><td>F</td></tr>
+</table>
+</div>
+</section>
+
+<!--- PROPOSITIONAL EQUIVALENCES -->
+<section class="slide" id="slide18">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Propositional Equivalences</h2>
+<ul>
+    <li> Double Negation Laws </li>
+    <li> De Morgan's Laws </li>
+    <li> Commutative Laws </li>
+    <li> Associative Laws </li>
+    <li> Distributive Laws </li>
+</ul>
+</div>
+</section>
+
+<!--- PROPOSITIONAL EQUIVALENCES -->
+<section class="slide" id="slide19">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Propositional Equivalences</h2>
+<p class="section-text"> 
+are fundamental concept in propositional logic. They describe when two propositions have the same truth 
+value in every possible scenario. In essence, two propositions are equivalent if they are 
+logically interchangeable.
+</p>
+<p> We denote this equivalence as:</p>
+<p class = "highlighted-text">  P ≡ Q or P ⇔ Q. </p>
+</div>
+</section>
+
+<!--- Double Negation Laws -->
+<section class="slide" id="slide20">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Double Negation Laws</h2>
+<p class="section-text"> 
+is a fundamental principle in classical logic. It essentially states 
+that negating a negation returns the original proposition. 
+</p>
+<p> The double negation law asserts that "not not P" is equivalent to "P.“ 
+Symbolically, this is expressed as: </p>
+<p class="highlighted-text">¬ ( ¬P ) ≡ P</p>
+</div>
+</section>
+
+<!--- Conditional Disjunction Equivalence -->
+<section class="slide" id="slide21">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Conditional Disjunction Equivalence</h2>
+<p class="section-text"> 
+refers to a crucial relationship between a conditional statement (implication) and a disjunction (OR statement) 
+</p>
+<p> A conditional statement "if P, then Q" (P → Q) is logically equivalent to "not P or Q" (¬P ∨ Q). 
+Symbolically:  </p>
+<p class="highlighted-text">p → q ≡ ¬p ∨ q </p>
+</div>
+</section>
+
+<!--- De Morgan's Law-->
+<section class="slide" id="slide22">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">De Morgan's Law</h2>
+<p class="section-text"> 
+are a pair of transformation rules in Boolean algebra and propositional 
+logic that relate the logical operators "and" and "or" through negation. 
+They provide a way to switch between "and" and "or" by negating the terms.
+</p>
+<p> De Morgan's Laws are expressed as follows: </p>
+<ul>
+    <li> De Morgan's Law 1</li>
+    <li> De Morgan's Law 2</li>
+</ul>
+</div>
+</section>
+
+<!--- De Morgan's Law 1-->
+<section class="slide" id="slide23">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">De Morgan's Law 1</h2>
+<p class="section-text"> The negation of a conjunction is the disjunction 
+of the negations. In simpler terms: "not (A and B)" is the same as "not A or not B." Symbolically: </p>
+<p class="highlighted-text"> ¬(p ∧ q) ≡ (¬p ∨ ¬q)</p>
+</div>
+</section>
+
+<!--- De Morgan's Law 2-->
+<section class="slide" id="slide24">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">De Morgan's Law 2</h2>
+<p class="section-text"> The negation of a disjunction is the 
+conjunction of the negations. In simpler terms: 
+"not (A or B)" is the same as "not A and not B.“ Symbolically: </p>
+<p class="highlighted-text"> ¬(p ∨ q) ≡ (¬p ∧ ¬q)</p>
+</div>
+</section>
+
+<!--- Commutative Law-->
+<section class="slide" id="slide25">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Commutative Law</h2>
+<p class="section-text">  are fundamental rules that allow us to change the order of propositions 
+within logical expressions without altering their truth values. Specifically, they apply to 
+the logical connectives "and" (conjunction) and "or" (disjunction).
+</p>
+<p> Commutative Law are expressed as follows: </p>
+<ul>
+    <li> Commutative Law of Conjunction (AND)</li>
+    <li> Commutative Law of Disjunction (OR)</li>
+</ul>
+</div>
+</section>
+
+<!--- Commutative Law of Conjunction (AND)-->
+<section class="slide" id="slide26">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Commutative Law of Conjunction (AND)</h2>
+<p class="section-text"> This law states that the order of propositions connected by 
+"and" does not affect the truth value of the compound proposition. Symbolically: </p>
+<p class="highlighted-text"> p ∧ q ≡ q ∧ p </p>
+</div>
+</section>
+
+<!--- Commutative Law of Disjunction (OR)-->
+<section class="slide" id="slide27">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Commutative Law of Disjunction (OR)</h2>
+<p class="section-text"> This law states that the order of propositions connected by 
+"or" does not affect the truth value of the compound proposition. Symbolically: </p>
+<p class="highlighted-text"> p ∨ q ≡ q ∨ p </p>
+</div>
+</section>
+
+<!--- Associative Laws-->
+<section class="slide" id="slide28">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Associative Law</h2>
+<p class="section-text"> describe how you can group propositions within expressions 
+involving either conjunction (AND) or disjunction (OR) without changing the truth 
+value of the overall expression.
+ </p>
+<p> Associative Law are expressed as follows: </p>
+<ul>
+    <li> Associative Law for Conjunction</li>
+    <p class="highlighted-text"> (p ∧ q) ∧ r ≡ p ∧ (q ∧ r) </p>
+    <p> which means that "p and q, and r" is logically equivalent to "p and, q and r."</p>
+    <li> Associative Law for Disjunction</li>
+    <p class="highlighted-text"> (p ∨ q) ∨ r ≡ p ∨ (q ∨ r)  </p>
+    <p> which means that "p or q, or r" is logically equivalent to "p or, q or r."
+</p>
+</ul>
+</div>
+</section>
+
+<!--- Distributive Laws-->
+<section class="slide" id="slide29">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+<h2 class="section-title">Distributive Law</h2>
+<p class="section-text"> describe how you can distribute one logical connective over another. Specifically, they show how conjunction distributes over disjunction and vice versa.
+ </p>
+<p> Distributive Law are expressed as follows: </p>
+<ul>
+    <li> Distributive Law for Conjunction over Disjunction</li>
+    <p class="highlighted-text"> p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r) </p>
+    <p>  which means that "p and (q or r)" is logically equivalent to "(p and q) or (p and r)".   </p>
+    <li> Distributive Law for Disjunction over Conjunction</li>
+    <p class="highlighted-text"> p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r) </p>
+    <p>which means that "p or (q and r)" is logically equivalent to "(p or q) and (p or r)".</p>
+</ul>
+</div>
+</section>
+
+<!--- Practice test --->
+<section class="slide" id="slide30">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<button class="nav-btn nav-right" onclick="nextSlide()">›</button>
+<div class="container">
+    <h2 class="section-title">Practice Test</h2>
+    <p class="section-text">Using the laws of propositional equivalences, prove the following equivalences:</p>
+    <ul>
+        <li> ¬ ( p → q ) ≡ p ∧ ¬q </li>
+        <li> p → ( q ∧ r ) ≡ ¬ p ∨ ( q ∧ r ) </li>
+        <li> ( p ↔ q ) ∧ p ≡ ( ( p → q ) ∧ ( q → p ) ) ∧ p </li>
+        <li> ¬ ( p ∨ ¬q ) ≡ ¬p ∧ ¬ ( ¬q ) </li>
+        <li> ¬ ( p → ¬q) ≡ ¬( ¬p ∨ ¬q) </li>
+    </ul>
+</div>
+</section>
+
+<section class="slide" id="slide31">
+<button class="nav-btn nav-left" onclick="prevSlide()">‹</button>
+<div class="container" style="padding: 180px 50px 40px 50px;">
+<h2 class="section-title logical-title"> Logical Equivalences </h2>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 25px; align-items: start;">
+<!-- Table 1: Basic Equivalences -->
+    <div style="margin-top: 30px;">
+        <table class="table table-bordered" style="text-align: center; background: white; margin: 10;">
+            <thead style="background: #a6e1fb;">
+                <tr>
+                    <th style="font-weight: 700; color: #1f3a5f; padding: 8px 5px; font-size: 1.1rem;">Equivalence</th>
+                    <th style="font-weight: 700; color: #1f3a5f; padding: 8px 5px; font-size: 1.1rem;">Name</th>
+                </tr>
+            </thead>
+        <tbody style="font-size: 1.1rem;">
+                <tr>
+                    <td style="padding: 6px 3px;">p ∧ T ≡ p<br>p ∨ F ≡ p</td>
+                    <td style="padding: 6px 3px;">Identity laws</td>
+                </tr>
+                <tr>
+                    <td style="padding: 6px 3px;">p ∨ T ≡ T<br>p ∧ F ≡ F</td>
+                    <td style="padding: 6px 3px;">Domination laws</td>
+                </tr>
+                <tr>
+                    <td style="padding: 6px 3px;">p ∨ p ≡ p<br>p ∧ p ≡ p</td>
+                    <td style="padding: 6px 3px;">Idempotent laws</td>
+                </tr>
+                <tr>
+                    <td style="padding: 6px 3px;">¬(¬p) ≡ p</td>
+                    <td style="padding: 6px 3px;">Double negation</td>
+                </tr>
+                <tr>
+                    <td style="padding: 6px 3px;">p ∨ q ≡ q ∨ p<br>p ∧ q ≡ q ∧ p</td>
+                    <td style="padding: 6px 3px;">Commutative laws</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Table 2: Advanced Equivalences -->
+        <div style="margin-top: -200px;">
+            <table class="table table-bordered" style="text-align: center; background: white; margin-bottom: 10;">
+                <thead style="background: #a6e1fb;">
+                    <tr>
+                        <th style="font-weight: 700; color: #1f3a5f; padding: 8px 5px; font-size: 1.1rem;" colspan="2">Equivalence Laws</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 1.1rem;">
+                    <tr style="background: #e8f4f8;">
+                        <td colspan="2" style="font-weight: 600; color: #1f3a5f; padding: 6px 3px;">Associative laws</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 6px 3px;">(p ∨ q) ∨ r ≡ p ∨ (q ∨ r)<br>(p ∧ q) ∧ r ≡ p ∧ (q ∧ r)</td>
+                        <td></td>
+                    </tr>
+                    <tr style="background: #e8f4f8;">
+                        <td colspan="2" style="font-weight: 600; color: #1f3a5f; padding: 6px 3px;">Distributive laws</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 6px 3px;">p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r)<br>p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)</td>
+                        <td></td>
+                    </tr>
+                    <tr style="background: #e8f4f8;">
+                        <td colspan="2" style="font-weight: 600; color: #1f3a5f; padding: 6px 3px;">De Morgan's laws</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 6px 3px;">¬(p ∧ q) ≡ ¬p ∨ ¬q<br>¬(p ∨ q) ≡ ¬p ∧ ¬q</td>
+                        <td></td>
+                    </tr>
+                    <tr style="background: #e8f4f8;">
+                        <td colspan="2" style="font-weight: 600; color: #1f3a5f; padding: 6px 3px;">Absorption laws</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 6px 3px;">p ∨ (p ∧ q) ≡ p<br>p ∧ (p ∨ q) ≡ p</td>
+                        <td></td>
+                    </tr>
+                    <tr style="background: #e8f4f8;">
+                        <td colspan="2" style="font-weight: 600; color: #1f3a5f; padding: 6px 3px;">Negation laws</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 6px 3px;">p ∨ ¬p ≡ T<br>p ∧ ¬p ≡ F</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+<script>
+let currentSlide=1;
+const totalSlides = document.querySelectorAll('.slide').length;
+
+function showSlide(n){
+document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
+document.getElementById('slide'+n).classList.add('active');
+slideCounter.innerText=`Slide ${n} / ${totalSlides}`;
+progressBar.style.width=(n/totalSlides*100)+"%";
+}
+function nextSlide(){if(currentSlide<totalSlides){currentSlide++;showSlide(currentSlide);}}
+function prevSlide(){if(currentSlide>1){currentSlide--;showSlide(currentSlide);}}
+document.addEventListener('keydown',e=>{
+if(e.key==="ArrowRight")nextSlide();
+if(e.key==="ArrowLeft")prevSlide();
+});
+</script>
+
+</body>
+</html>
